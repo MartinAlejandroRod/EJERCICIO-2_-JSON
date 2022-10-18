@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    var stringAutos = '[{"auto":"toyota-supra","velocidad_maxima":190},{"auto":"Toyota-ae86","velocidad_maxima":220},{"auto":"ford-focus","velocidad_maxima":170},{"auto":"toyota-corolla","velocidad_maxima":200}]'
+    var todoslosautomoviles = JSON.parse(stringAutos)//STRING A JSON//
+    var acumulador = 0;
+    var maximavelocidad = 1;
+    var toyotamasrapido = ""
+    var fordmasrapido = "focus"
+
+    for (let i = 0; i < todoslosautomoviles.length; i++) {
+      var elemento1 = todoslosautomoviles[i]
+      console.log(elemento1)
+      acumulador = acumulador + elemento1.velocidad_maxima
+      var marcadelautomovil = elemento1.auto.toLowerCase().split("-")[0]
+      var modelodelautomovil = elemento1.auto.toLowerCase().split("-")[1]
+
+      if (marcadelautomovil == "toyota" && elemento1.velocidad_maxima > maximavelocidad) {
+        maximavelocidad = elemento1.velocidad_maxima
+        toyotamasrapido = modelodelautomovil;
+      }
+
+      if (marcadelautomovil == "ford" && elemento1.velocidad_maxima > maximavelocidad) {
+        maximavelocidad = elemento1.velocidad_maxima
+        fordmasrapido = modelodelautomovil;
+      }
+
+    }
+
+    console.log("El promedio de velocidades es: ", acumulador / todoslosautomoviles.length)
+    console.log("De los 4, el auto mas rapido es: ", toyotamasrapido)
+    console.log("El Toyota mas rapido es: ", toyotamasrapido)
+    console.log("El FORD mas rapido es: ", fordmasrapido)
+
+  </script>
+
+</body>
+
+</html>
